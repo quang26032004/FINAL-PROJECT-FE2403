@@ -1,0 +1,15 @@
+.card {
+  transition: background-color 0.3s, transform 0.3s;
+
+  &:hover {
+    background-color: #fa25fa;
+    transform: scale(1.05);
+}
+
+  .vmu {
+    height: 100px;
+    width: 100px;
+    margin-top: -250%;
+    margin-left: 200%;
+  }
+}

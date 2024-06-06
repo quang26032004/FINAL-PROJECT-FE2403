@@ -1,0 +1,89 @@
+$primary-color: #1890ff;
+$text-color: #333;
+$border-color: #ddd;
+
+.registerForm {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid $border-color;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  .formItem {
+    margin-bottom: 20px;
+
+    .ant-form-item-label > label {
+      font-size: 14px;
+      color: $text-color;
+    }
+  }
+
+  .input {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+    }
+  }
+
+  .registerLink {
+    font-size: 14px;
+    color: $text-color;
+    text-align: center;
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+
+      &:hover {
+        color: darken($primary-color, 10%);
+      }
+    }
+  }
+
+  .registerButton {
+    background-color: #1890ff;
+    color: #fff;
+    border: none;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .registerButton:hover {
+    background-color: #40a9ff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
+  .successContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .successIcon {
+    margin-top: 16px;
+  }
+}

@@ -1,0 +1,71 @@
+.loginForm {
+  max-width: 700px;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .formItem {
+    margin-bottom: 20px;
+  }
+
+  .title{
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    margin-left: 45%;
+  }
+
+  .input {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease-in-out;
+    &:focus {
+      outline: none;
+      border-color: #1890ff;
+    }
+  }
+
+  .registerLink {
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    margin-left: 70px;
+
+    &:hover {
+      color: #1890ff;
+    }
+  }
+
+  .loginButton {
+    width: 100%;
+    height: 40px;
+    background-color: #1890ff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #40a9ff;
+      transition: background-color 0.3s ease-in-out;
+    }
+  }
+}
