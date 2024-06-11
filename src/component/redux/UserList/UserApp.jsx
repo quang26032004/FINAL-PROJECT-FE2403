@@ -3,19 +3,39 @@ import { useDispatch, useSelector } from "react-redux";
 import { Image } from "antd";
 import { useEffect, useState } from "react";
 import { getUserList, deleteUser, setUserDetail } from "../../store/UserList";
-import { Flex } from "antd";
+import { Space } from "antd";
 import { Input } from "antd";
 import classes from "../../../assets/styles/UserApp.module.scss";
 import UserModal from "./UserModal";
 import { Spin } from "antd";
 import { getUserInfo } from "../../../utils/helpers";
+import { render } from "react-dom";
 const { Search } = Input;
+import { Typography } from "antd";
+import { Row, Col } from "antd";
+import { Tag } from "antd";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  EyeOutlined,
+  QqOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
 const ageOptions = [
   { value: "10-20", label: "Age 10 - 20" },
   { value: "20-30", label: "Age 20 - 30" },
   { value: "30-40", label: "Age 30 - 40" },
   { value: "40+", label: "Age 40 up to" },
+];
+
+const departmentOptions = [
+  { label: "IT", value: "IT" },
+  { label: "Marketing", value: "Marketing" },
+  { label: "Sales", value: "Sales" },
+  { label: "Finance", value: "Finance" },
+  { label: "HR", value: "HR" },
+  { label: "Operations", value: "Operations" },
 ];
 
 const UserApp = () => {
@@ -25,6 +45,7 @@ const UserApp = () => {
   const [showUserModal, setShowUserModal] = useState(false);
   const [detailModalVisible, setDetailModalVisible] = useState(false);
   const [ageRange, setAgeRange] = useState();
+  const [department, setDepartment] = useState();
   const userInfo = getUserInfo();
   const isAdmin = userInfo.role === "admin";
 
@@ -38,67 +59,73 @@ const UserApp = () => {
       dataIndex: "first_name",
       key: "firstName",
       sorter: (a, b) => a.first_name.localeCompare(b.first_name),
-      filters: [
-        { text: "A > Z", value: "A > Z" },
-        { text: "Z > A", value: "Z > A" },
-      ],
     },
     {
       title: "Last Name",
       dataIndex: "last_name",
       key: "lastName",
       sorter: (a, b) => a.last_name.localeCompare(b.last_name),
-      filters: [
-        { text: "A > Z", value: "A > Z" },
-        { text: "Z > A", value: "Z > A" },
-      ],
     },
     {
       title: "Address",
       dataIndex: "Address",
       key: "address",
       sorter: (a, b) => a.Address.localeCompare(b.Address),
-      filters: [
-        { text: "A > Z", value: "A > Z" },
-        { text: "Z > A", value: "Z > A" },
-      ],
     },
     {
       title: "Age",
       dataIndex: "Age",
       key: "age",
       sorter: (a, b) => a.Age - b.Age,
-      filters: [
-        { text: "Over 30", value: "over30" },
-        { text: "Under 25", value: "under25" },
-      ],
     },
     {
       title: "Department",
       dataIndex: "Department",
       key: "department",
       sorter: (a, b) => a.Department.localeCompare(b.Department),
-      filters: [
-        { text: "A > Z", value: "A > Z" },
-        { text: "Z > A", value: "Z > A" },
-      ],
+    },
+    {
+      title: "Avatar",
+      dataIndex: "avatar",
+      key: "avatar",
+      render: (text) => <Image src={text} width={50} />,
+    },
+
+    {
+      title: "Role",
+      dataIndex: "role",
+      key: "role",
+      render: (text) => (
+        <span>
+          {text === "admin" ? (
+            <Tag color="blue" icon={<UserOutlined />}>
+              Admin
+            </Tag>
+          ) : (
+            <Tag icon={<QqOutlined />} color="green">
+              User
+            </Tag>
+          )}
+        </span>
+      ),
     },
 
     {
       title: "Actions",
       key: "actions",
       render: (text, record) => (
-        <Flex gap="small" wrap className={classes.actions}>
+        <Space size="middle" align="center">
           {isAdmin && (
             <Button
               type="primary"
+              icon={<EditOutlined />}
               onClick={() => handleEdit(record)}
               className={classes.editButton}
             >
               Edit
             </Button>
           )}
-          {isAdmin && (
+          {isAdmin && record.role !== "admin" && (
             <Popconfirm
               title="Are you sure to delete this user?"
               onConfirm={() => dispatch(deleteUser(record.id))}
@@ -108,6 +135,7 @@ const UserApp = () => {
               <Button
                 type="primary"
                 danger
+                icon={<DeleteOutlined />}
                 onClick={() => handleDelete(record.id)}
                 className={classes.deleteButton}
               >
@@ -117,12 +145,13 @@ const UserApp = () => {
           )}
           <Button
             type="primary"
+            icon={<EyeOutlined />}
             onClick={() => handleDetail(record)}
             className={classes.detailButton}
           >
             Detail
           </Button>
-        </Flex>
+        </Space>
       ),
     },
   ];
@@ -145,7 +174,7 @@ const UserApp = () => {
   const onSearch = (value) => {
     dispatch(
       getUserList({
-        first_name: value,
+        first_name_like: value.toLowerCase(),
       })
     );
   };
@@ -166,6 +195,19 @@ const UserApp = () => {
     }
   };
 
+  const onSearchDepartment = (value) => {
+    setDepartment(value);
+    if (value) {
+      dispatch(
+        getUserList({
+          Department: value,
+        })
+      );
+    } else {
+      dispatch(getUserList({}));
+    }
+  };
+
   const onAddNewUser = () => {
     setShowUserModal(true);
     setSelectedRecord({});
@@ -179,32 +221,44 @@ const UserApp = () => {
         </div>
       )}
       <h1>User App</h1>
-      {isAdmin && (
-        <Button
-          type="primary"
-          onClick={onAddNewUser}
-          className={classes.addUserButton}
-          style={{ marginBottom: 16, marginTop: 16 }}
-        >
-          Add New User
-        </Button>
-      )}
-      <Search
-        placeholder="Enter user name to search"
-        allowClear
-        enterButton="Search"
-        size="middle"
-        style={{ width: 300, marginLeft: 800, marginBottom: 16, marginTop: 16 }}
-        onSearch={onSearch}
-      />
-      <Select
-        value={ageRange}
-        onChange={onSearchAge}
-        options={ageOptions}
-        style={{ width: 200, marginBottom: 16, marginTop: 16, marginLeft: 16 }}
-        placeholder="Age Range"
-        allowClear
-      />
+      <div style={{ marginBottom: 16, marginTop: 16 }}>
+        <Space size="middle" align="center">
+          {isAdmin && (
+            <Button
+              type="primary"
+              onClick={onAddNewUser}
+              className={classes.addUserButton}
+            >
+              Add New User
+            </Button>
+          )}
+          <Search
+            placeholder="Enter user name to search"
+            allowClear
+            enterButton="Search"
+            size="middle"
+            onSearch={onSearch}
+          />
+          <Select
+            value={ageRange}
+            onChange={onSearchAge}
+            options={ageOptions}
+            placeholder="Age Range"
+            allowClear
+            dropdownMatchSelectWidth={false}
+            dropdownStyle={{ minWidth: 150 }}
+          />
+          <Select
+            value={department}
+            onChange={onSearchDepartment}
+            options={departmentOptions}
+            placeholder="Department"
+            allowClear
+            dropdownMatchSelectWidth={false}
+            dropdownStyle={{ minWidth: 150 }}
+          />
+        </Space>
+      </div>
 
       {isAdmin && (
         <UserModal
@@ -215,79 +269,100 @@ const UserApp = () => {
       )}
 
       <Modal
-        title="User Detail"
-        visible={detailModalVisible}
-        onOk={() => setDetailModalVisible(false)}
+        title={<h2>User Detail</h2>}
+        open={detailModalVisible}
         onCancel={() => setDetailModalVisible(false)}
         maskClosable={false}
-        style={{
-          top: "30%",
-        }}
+        centered
+        footer={null}
       >
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div>
-            <span>Avatar: </span>
-            <span
-              style={{
-                marginLeft: "50px",
-              }}
-            >
-              <Image src={selectedRecord?.avatar} width={100} />
-            </span>
-          </div>
-
-          <div>
-            <span>First Name:</span>
-            <span
-              style={{
-                marginLeft: "20px",
-              }}
-            >
+        <Image src={selectedRecord?.avatar} width={150} />
+        <Row>
+          <Col span={8}>
+            <Typography.Title level={3} strong>
+              First Name:
+            </Typography.Title>
+          </Col>
+          <Col span={8}>
+            <Typography.Title level={3}>
               {selectedRecord?.first_name}
-            </span>
-          </div>
-          <div>
-            <span>Last Name:</span>
-            <span
-              style={{
-                marginLeft: "20px",
-              }}
-            >
+            </Typography.Title>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={8}>
+            <Typography.Title level={3} strong>
+              Last Name:
+            </Typography.Title>
+          </Col>
+          <Col span={8}>
+            <Typography.Title level={3}>
               {selectedRecord?.last_name}
-            </span>
-          </div>
-          <div>
-            <span>Address:</span>
-            <span
-              style={{
-                marginLeft: "36px",
-              }}
-            >
+            </Typography.Title>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col span={8}>
+            <Typography.Title level={3} strong>
+              Address:
+            </Typography.Title>
+          </Col>
+          <Col span={8}>
+            <Typography.Title level={3}>
               {selectedRecord?.Address}
-            </span>
-          </div>
-          <div>
-            <span>Age:</span>
-            <span
-              style={{
-                marginLeft: "60px",
-              }}
-            >
-              {selectedRecord?.Age}
-            </span>
-          </div>
-          <div>
-            <span>Department:</span>
-            <span
-              style={{
-                marginLeft: "10px",
-              }}
-            >
+            </Typography.Title>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col span={8}>
+            <Typography.Title level={3} strong>
+              Age:
+            </Typography.Title>
+          </Col>
+          <Col span={8}>
+            <Typography.Title level={3}>{selectedRecord?.Age}</Typography.Title>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col span={8}>
+            <Typography.Title level={3} strong>
+              Department:
+            </Typography.Title>
+          </Col>
+          <Col span={8}>
+            <Typography.Title level={3}>
               {selectedRecord?.Department}
-            </span>
-          </div>
-        </div>
+            </Typography.Title>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col span={8}>
+            <Typography.Title level={3} strong>
+              Role:
+            </Typography.Title>
+          </Col>
+          <Col span={8}>
+            {selectedRecord?.role === "admin" ? (
+              <Tag
+                color="blue"
+                icon={<UserOutlined />}
+                style={{ fontSize: 18 }}
+              >
+                Admin
+              </Tag>
+            ) : (
+              <Tag color="green" icon={<QqOutlined />} style={{ fontSize: 18 }}>
+                User
+              </Tag>
+            )}
+          </Col>
+        </Row>
       </Modal>
+
       <Table
         columns={columns}
         dataSource={UserList}
@@ -298,277 +373,3 @@ const UserApp = () => {
 };
 
 export default UserApp;
-
-// import { Table, Button, Modal, Popconfirm, Select } from "antd";
-// import { useDispatch, useSelector } from "react-redux";
-// import { Image } from "antd";
-// import { useEffect, useState } from "react";
-// import { getUserList, deleteUser, setUserDetail } from "../../store/UserList";
-// import { Flex } from "antd";
-// import { Input } from "antd";
-// import classes from "../../../assets/styles/UserApp.module.scss";
-// import UserModal from "./UserModal";
-// import { Spin } from "antd";
-// const { Search } = Input;
-
-// const UserApp = () => {
-//   const dispatch = useDispatch();
-//   const { UserList, status } = useSelector((store) => store.UserAPI);
-//   const [selectedRecord, setSelectedRecord] = useState({});
-//   const [showUserModal, setShowUserModal] = useState(false);
-//   const [detailModalVisible, setDetailModalVisible] = useState(false);
-//   const [ageRange, setAgeRange] = useState("");
-//   const isAdmin = false;
-
-//   useEffect(() => {
-//     dispatch(getUserList());
-//   }, [dispatch]);
-
-//   const columns = [
-//     {
-//       title: "First Name",
-//       dataIndex: "first_name",
-//       key: "firstName",
-//       sorter: (a, b) => a.first_name.localeCompare(b.first_name),
-//       filters: [
-//         { text: "A > Z", value: "A > Z" },
-//         { text: "Z > A", value: "Z > A" },
-//       ],
-//     },
-//     {
-//       title: "Last Name",
-//       dataIndex: "last_name",
-//       key: "lastName",
-//       sorter: (a, b) => a.last_name.localeCompare(b.last_name),
-//       filters: [
-//         { text: "A > Z", value: "A > Z" },
-//         { text: "Z > A", value: "Z > A" },
-//       ],
-//     },
-//     {
-//       title: "Address",
-//       dataIndex: "Address",
-//       key: "address",
-//       sorter: (a, b) => a.Address.localeCompare(b.Address),
-//       filters: [
-//         { text: "A > Z", value: "A > Z" },
-//         { text: "Z > A", value: "Z > A" },
-//       ],
-//     },
-//     {
-//       title: "Age",
-//       dataIndex: "Age",
-//       key: "age",
-//       sorter: (a, b) => a.Age - b.Age,
-//       filters: [
-//         { text: "Over 30", value: "over30" },
-//         { text: "Under 25", value: "under25" },
-//       ],
-//     },
-//     {
-//       title: "Department",
-//       dataIndex: "Department",
-//       key: "department",
-//       sorter: (a, b) => a.Department.localeCompare(b.Department),
-//       filters: [
-//         { text: "A > Z", value: "A > Z" },
-//         { text: "Z > A", value: "Z > A" },
-//       ],
-//     },
-//     {
-//       title: "Actions",
-//       key: "actions",
-//       render: (text, record) => (
-//         <Flex gap="small" wrap className={classes.actions}>
-//           <Button
-//             type="primary"
-//             onClick={() => handleEdit(record)}
-//             className={classes.editButton}
-//           >
-//             Edit
-//           </Button>
-//           <Popconfirm
-//             title="Are you sure to delete this user?"
-//             onConfirm={() => dispatch(deleteUser(record.id))}
-//             okText="Yes"
-//             cancelText="No"
-//           >
-//             <Button
-//               type="primary"
-//               danger
-//               onClick={() => handleDelete(record.id)}
-//               className={classes.deleteButton}
-//             >
-//               Delete
-//             </Button>
-//           </Popconfirm>
-//           <Button
-//             type="primary"
-//             onClick={() => handleDetail(record)}
-//             className={classes.detailButton}
-//           >
-//             Detail
-//           </Button>
-//         </Flex>
-//       ),
-//     },
-//   ];
-
-//   const handleEdit = (record) => {
-//     setSelectedRecord(record);
-//     setShowUserModal(true);
-//   };
-
-//   const handleDetail = (record) => {
-//     dispatch(setUserDetail(record));
-//     setSelectedRecord(record);
-//     setDetailModalVisible(true);
-//   };
-
-//   const ageOptions = [
-//     { value: "10-20", label: "Age 10 - 20" },
-//     { value: "20-30", label: "Age 20 - 30" },
-//     { value: "30-40", label: "Age 30 - 40" },
-//     { value: "40+", label: "Age 40 up to" },
-//   ];
-
-//   const onSearch = (value) => {
-//     dispatch(
-//       getUserList({
-//         first_name: value,
-//       })
-//     );
-//   };
-
-//   const onSearchAge = (value) => {
-//     dispatch(
-//       getUserList({
-//         Age: value,
-//       })
-//     );
-//   };
-
-//   return (
-//     <div className={classes.container}>
-//       {status === "loading" && (
-//         <div className={classes.loadingContainer}>
-//           <Spin size="large" />
-//         </div>
-//       )}
-//       <h1>User App</h1>
-//       <Button
-//         type="primary"
-//         onClick={() => setShowUserModal(true)}
-//         className={classes.addUserButton}
-//         style={{ marginBottom: 16, marginTop: 16 }}
-//       >
-//         Add New User
-//       </Button>
-//       <Search
-//         placeholder="Enter user name to search"
-//         allowClear
-//         enterButton="Search"
-//         size="middle"
-//         style={{ width: 300, marginLeft: 800, marginBottom: 16, marginTop: 16 }}
-//         onSearch={onSearch}
-//       />
-//       <Select
-//         value={ageRange}
-//         onChange={(value) => setAgeRange(value)}
-//         options={ageOptions}
-//         style={{ width: 120, marginLeft: 16 }}
-//         placeholder="Age Range"
-//         allowClear
-//         onSearch={onSearchAge}
-//       />
-
-//       <UserModal
-//         showUserModal={showUserModal}
-//         setShowUserModal={setShowUserModal}
-//         selectedRecord={selectedRecord}
-//       />
-
-//       <Modal
-//         title="User Detail"
-//         visible={detailModalVisible}
-//         onOk={() => setDetailModalVisible(false)}
-//         onCancel={() => setDetailModalVisible(false)}
-//         maskClosable={false}
-//         style={{
-//           top: "30%",
-//         }}
-//       >
-//         <div style={{ display: "flex", flexDirection: "column" }}>
-//           <div>
-//             <span>Avatar: </span>
-//             <span
-//               style={{
-//                 marginLeft: "50px",
-//               }}
-//             >
-//               <Image src={selectedRecord?.avatar} width={100} />
-//             </span>
-//           </div>
-
-//           <div>
-//             <span>First Name:</span>
-//             <span
-//               style={{
-//                 marginLeft: "20px",
-//               }}
-//             >
-//               {selectedRecord?.first_name}
-//             </span>
-//           </div>
-//           <div>
-//             <span>Last Name:</span>
-//             <span
-//               style={{
-//                 marginLeft: "20px",
-//               }}
-//             >
-//               {selectedRecord?.last_name}
-//             </span>
-//           </div>
-//           <div>
-//             <span>Address:</span>
-//             <span
-//               style={{
-//                 marginLeft: "36px",
-//               }}
-//             >
-//               {selectedRecord?.Address}
-//             </span>
-//           </div>
-//           <div>
-//             <span>Age:</span>
-//             <span
-//               style={{
-//                 marginLeft: "60px",
-//               }}
-//             >
-//               {selectedRecord?.Age}
-//             </span>
-//           </div>
-//           <div>
-//             <span>Department:</span>
-//             <span
-//               style={{
-//                 marginLeft: "10px",
-//               }}
-//             >
-//               {selectedRecord?.Department}
-//             </span>
-//           </div>
-//         </div>
-//       </Modal>
-//       <Table
-//         columns={columns}
-//         dataSource={UserList}
-//         className={classes.table}
-//       />
-//     </div>
-//   );
-// };
-
-// export default UserApp;

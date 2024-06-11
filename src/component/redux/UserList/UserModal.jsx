@@ -68,6 +68,7 @@ const UserAdd = ({ showUserModal, setShowUserModal, selectedRecord }) => {
       onCancel={handleCancel}
       maskClosable={false}
       okText={isEdit ? "Update" : "Create"}
+      style={{ top: 200 }}
     >
       <Form
         onFinish={onFinish}
@@ -83,7 +84,20 @@ const UserAdd = ({ showUserModal, setShowUserModal, selectedRecord }) => {
         <Form.Item
           label="First Name"
           name="first_name"
-          rules={[{ required: true, message: "Please enter the first name" }]}
+          rules={[
+            {
+              required: true,
+              message: "Please enter the first name",
+            },
+            {
+              pattern: /^[a-zA-Z ]*$/,
+              message: "Please enter valid first name",
+            },
+            {
+              max: 10,
+              message: "First name must be less than 10 characters",
+            },
+          ]}
         >
           <Input />
         </Form.Item>
@@ -91,7 +105,20 @@ const UserAdd = ({ showUserModal, setShowUserModal, selectedRecord }) => {
         <Form.Item
           label="Last Name"
           name="last_name"
-          rules={[{ required: true, message: "Please enter the last name" }]}
+          rules={[
+            {
+              required: true,
+              message: "Please enter the last name",
+            },
+            {
+              pattern: /^[a-zA-Z ]*$/,
+              message: "Please enter valid last name",
+            },
+            {
+              max: 10,
+              message: "Last name must be less than 10 characters",
+            },
+          ]}
         >
           <Input />
         </Form.Item>
@@ -107,7 +134,27 @@ const UserAdd = ({ showUserModal, setShowUserModal, selectedRecord }) => {
         <Form.Item
           label="Age"
           name="Age"
-          rules={[{ required: true, message: "Please enter the age" }]}
+          rules={[
+            { required: true, message: "Please enter the age" },
+            {
+              pattern: /^[0-9]*$/,
+              message: "Please enter valid age",
+            },
+            {
+              max: 3,
+              message: "Age must be less than 3 characters",
+            },
+            {
+              validator: (_, value) => {
+                if (value < 0) {
+                  return Promise.reject("Age must be greater than 0");
+                } else if (value > 100) {
+                  return Promise.reject("Age must be less than 100");
+                }
+                return Promise.resolve();
+              },
+            },
+          ]}
         >
           <Input type="number" />
         </Form.Item>
@@ -129,9 +176,26 @@ const UserAdd = ({ showUserModal, setShowUserModal, selectedRecord }) => {
         <Form.Item
           label="Avatar"
           name="avatar"
-          rules={[{ required: true, message: "Please enter the avatar link" }]}
+          rules={[
+            { required: true, message: "Please enter the avatar" },
+            {
+              type: "url",
+              message: "Please enter valid url",
+            },
+          ]}
         >
           <Input />
+        </Form.Item>
+
+        <Form.Item
+          label="Role"
+          name="role"
+          rules={[{ required: true, message: "Please enter the role" }]}
+        >
+          <Select>
+            <Select.Option value="admin">Admin</Select.Option>
+            <Select.Option value="user">User</Select.Option>
+          </Select>
         </Form.Item>
       </Form>
     </Modal>

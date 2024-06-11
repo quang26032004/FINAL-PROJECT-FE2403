@@ -1,74 +1,20 @@
 {
   "users": [
     {
-      "first_name": "Jane",
+      "first_name": "James",
       "last_name": "Smith",
       "Address": "456 Elm St",
       "Age": 30,
       "Department": "Marketing",
       "avatar": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "id": "def456"
-    },
-    {
-      "first_name": "Matthew",
-      "last_name": "Harris",
-      "Address": "222 Elm St",
-      "Age": 22,
-      "Department": "Marketing",
-      "avatar": "https://ui-avatars.com/api/?name=Matthew+Harris",
-      "id": "ghi789"
-    },
-    {
-      "first_name": "Sarah",
-      "last_name": "Williams",
-      "username": "sarahwilliams",
-      "password": "passwordabc",
-      "Address": "321 Pine St",
-      "Age": 35,
-      "Department": "HR",
-      "id": "jkl012",
-      "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Sarah+Williams"
-    },
-    {
-      "first_name": "Michael",
-      "last_name": "Brown",
-      "username": "michaelbrown",
-      "password": "passworddef",
-      "Address": "654 Cedar St",
-      "Age": 28,
-      "Department": "IT",
-      "id": "mno345",
-      "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Michael+Brown"
-    },
-    {
-      "first_name": "Emily",
-      "last_name": "Jones",
-      "username": "emilyjones",
-      "password": "passwordghi",
-      "Address": "987 Maple St",
-      "Age": 32,
-      "Department": "Operations",
-      "id": "pqr678",
-      "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Emily+Jones"
-    },
-    {
-      "first_name": "Daniel",
-      "last_name": "Taylor",
-      "username": "danieltaylor",
-      "password": "passwordjkl",
-      "Address": "654 Birch St",
-      "Age": 45,
-      "Department": "Sales",
-      "id": "stu901",
-      "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Daniel+Taylor"
+      "id": "def456",
+      "role": "admin",
+      "username": "jamessmith",
+      "password": "password123"
     },
     {
       "first_name": "Olivia",
-      "last_name": "Davis",
+      "last_name": "Davis123",
       "username": "oliviadavis",
       "password": "passwordmno",
       "Address": "321 Oak St",
@@ -76,43 +22,7 @@
       "Department": "Marketing",
       "id": "vwx234",
       "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Olivia+Davis"
-    },
-    {
-      "first_name": "James",
-      "last_name": "Miller",
-      "username": "jamesmiller",
-      "password": "passwordpqr",
-      "Address": "987 Elm St",
-      "Age": 38,
-      "Department": "Finance",
-      "id": "yz0123",
-      "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=James+Miller"
-    },
-    {
-      "first_name": "Sophia",
-      "last_name": "Wilson",
-      "username": "sophiawilson",
-      "password": "passwordstu",
-      "Address": "654 Pine St",
-      "Age": 31,
-      "Department": "HR",
-      "id": "456789",
-      "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Sophia+Wilson"
-    },
-    {
-      "first_name": "Benjamin",
-      "last_name": "Anderson",
-      "username": "benjaminanderson",
-      "password": "passwordvwx",
-      "Address": "321 Cedar St",
-      "Age": 29,
-      "Department": "IT",
-      "id": "789012",
-      "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Benjamin+Anderson"
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
     },
     {
       "first_name": "Ava",
@@ -124,7 +34,7 @@
       "Department": "Operations",
       "id": "345678",
       "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Ava+Thomas"
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
     },
     {
       "first_name": "William",
@@ -136,7 +46,7 @@
       "Department": "Sales",
       "id": "901234",
       "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=William+Martinez"
+      "avatar": "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGF2YXRhciUyMHVzZXJ8ZW58MHx8MHx8fDA%3D"
     },
     {
       "first_name": "Mia",
@@ -144,8 +54,11 @@
       "Address": "321 Elm St",
       "Age": 14,
       "Department": "Marketing",
-      "avatar": "https://ui-avatars.com/api/?name=Mia+Robinson",
-      "id": "567890"
+      "avatar": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9",
+      "id": "567890",
+      "role": "user",
+      "username": "miarobinson",
+      "password": "password123"
     },
     {
       "first_name": "Liam",
@@ -157,7 +70,7 @@
       "Department": "Finance",
       "id": "123456",
       "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Liam+Clark"
+      "avatar": "https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGF2YXRhciUyMHVzZXJ8ZW58MHx8MHx8fDA%3D"
     },
     {
       "first_name": "Isabella",
@@ -168,8 +81,8 @@
       "Age": 30,
       "Department": "HR",
       "id": "789012",
-      "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Isabella+Rodriguez"
+      "role": "admin",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
     },
     {
       "first_name": "Noah",
@@ -181,7 +94,7 @@
       "Department": "IT",
       "id": "345678",
       "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Noah+Lewis"
+      "avatar": "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
     },
     {
       "first_name": "Charlotte",
@@ -193,7 +106,7 @@
       "Department": "Operations",
       "id": "901234",
       "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Charlotte+Lee"
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
     },
     {
       "first_name": "Elijah",
@@ -205,7 +118,7 @@
       "Department": "Sales",
       "id": "567890",
       "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Elijah+Walker"
+      "avatar": "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGF2YXRhciUyMHVzZXJ8ZW58MHx8MHx8fDA%3D"
     },
     {
       "first_name": "Amelia",
@@ -217,7 +130,7 @@
       "Department": "Marketing",
       "id": "123456",
       "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Amelia+Hall"
+      "avatar": "https://images.unsplash.com/photo-1701615004837-40d8573b6652?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGF2YXRhciUyMHVzZXJ8ZW58MHx8MHx8fDA%3D"
     },
     {
       "first_name": "Henry",
@@ -229,7 +142,7 @@
       "Department": "Finance",
       "id": "789012",
       "role": "user",
-      "avatar": "https://ui-avatars.com/api/?name=Henry+Allen"
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
     },
     {
       "id": "6078",
@@ -238,7 +151,250 @@
       "Address": "675 Oat St",
       "Age": 25,
       "Department": "Finance",
-      "avatar": "https://ui-avatars.com/api/?nameMichael+Johnson"
+      "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHVzZXJ8ZW58MHx8MHx8fDA%3D",
+      "password": "password123",
+      "role": "user",
+      "username": "michaeljohnson"
+    },
+    {
+      "id": "e3d8",
+      "first_name": "Kobbie",
+      "last_name": "Mainoo",
+      "Address": "Old Trafford",
+      "Age": 19,
+      "Department": "Sales",
+      "avatar": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "password": "password123",
+      "role": "admin",
+      "username": "kobbiemainoo"
+    },
+    {
+      "first_name": "Emma",
+      "last_name": "Brown",
+      "username": "emmabrown",
+      "password": "passwordxyz",
+      "Address": "123 Maple St",
+      "Age": 32,
+      "Department": "HR",
+      "id": "234567",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGF2YXRhciUyMHVzZXJ8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+      "first_name": "Alexander",
+      "last_name": "Garcia",
+      "username": "alexandergarcia",
+      "password": "password456",
+      "Address": "456 Pine St",
+      "Age": 35,
+      "Department": "IT",
+      "id": "345678",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+    },
+    {
+      "first_name": "Harper",
+      "last_name": "Lopez",
+      "username": "harperlopez",
+      "password": "password789",
+      "Address": "789 Elm St",
+      "Age": 27,
+      "Department": "Operations",
+      "id": "901234",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+    },
+    {
+      "first_name": "Daniel",
+      "last_name": "Hernandez",
+      "username": "danielhernandez",
+      "password": "passwordabc",
+      "Address": "321 Oak St",
+      "Age": 29,
+      "Department": "Marketing",
+      "id": "567890",
+      "role": "admin",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+    },
+    {
+      "first_name": "Sophia",
+      "last_name": "Gonzalez",
+      "username": "sophiagonzalez",
+      "password": "passworddef",
+      "Address": "987 Cedar St",
+      "Age": 31,
+      "Department": "Finance",
+      "id": "123456",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+    },
+    {
+      "first_name": "Logan",
+      "last_name": "Perez",
+      "username": "loganperez",
+      "password": "passwordpqr",
+      "Address": "654 Pine St",
+      "Age": 33,
+      "Department": "HR",
+      "id": "789012",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+    },
+    {
+      "first_name": "Sebastian",
+      "last_name": "Torres",
+      "username": "sebastiantorres",
+      "password": "passwordmno",
+      "Address": "321 Elm St",
+      "Age": 28,
+      "Department": "IT",
+      "id": "901234",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGF2YXRhciUyMHVzZXJ8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+      "first_name": "Avery",
+      "last_name": "Flores",
+      "username": "averyflores",
+      "password": "passwordxyz",
+      "Address": "987 Oak St",
+      "Age": 30,
+      "Department": "Sales",
+      "id": "567890",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1701615004837-40d8573b6652?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGF2YXRhciUyMHVzZXJ8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+      "first_name": "Evelyn",
+      "last_name": "Rivera",
+      "username": "evelynrivera",
+      "password": "password456",
+      "Address": "321 Cedar St",
+      "Age": 29,
+      "Department": "Marketing",
+      "id": "123456",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+    },
+    {
+      "first_name": "Mason",
+      "last_name": "Gomez",
+      "username": "masongomez",
+      "password": "password789",
+      "Address": "987 Elm St",
+      "Age": 31,
+      "Department": "Operations",
+      "id": "789012",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+    },
+    {
+      "first_name": "Scarlett",
+      "last_name": "Cruz",
+      "username": "scarlettcruz",
+      "password": "passwordabc",
+      "Address": "654 Maple St",
+      "Age": 28,
+      "Department": "Finance",
+      "id": "901234",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+    },
+    {
+      "first_name": "Luke",
+      "last_name": "Hayes",
+      "username": "lukehayes",
+      "password": "passworddef",
+      "Address": "321 Pine St",
+      "Age": 29,
+      "Department": "HR",
+      "id": "567890",
+      "role": "admin",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+    },
+    {
+      "first_name": "Lily",
+      "last_name": "Washington",
+      "username": "lilywashington",
+      "password": "passwordmno",
+      "Address": "987 Cedar St",
+      "Age": 30,
+      "Department": "IT",
+      "id": "123456",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+    },
+    {
+      "first_name": "Grayson",
+      "last_name": "Hill",
+      "username": "graysonhill",
+      "password": "passwordpqr",
+      "Address": "654 Elm St",
+      "Age": 31,
+      "Department": "Sales",
+      "id": "789012",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGF2YXRhciUyMHVzZXJ8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+      "first_name": "Aria",
+      "last_name": "Barnes",
+      "username": "ariabarnes",
+      "password": "passwordxyz",
+      "Address": "321 Oak St",
+      "Age": 32,
+      "Department": "Marketing",
+      "id": "901234",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1701615004837-40d8573b6652?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGF2YXRhciUyMHVzZXJ8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+      "first_name": "Jack",
+      "last_name": "Coleman",
+      "username": "jackcoleman",
+      "password": "password456",
+      "Address": "987 Pine St",
+      "Age": 33,
+      "Department": "Operations",
+      "id": "567890",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+    },
+    {
+      "first_name": "Leah",
+      "last_name": "Powell",
+      "username": "leahpowell",
+      "password": "passwordabc",
+      "Address": "654 Oak St",
+      "Age": 34,
+      "Department": "Finance",
+      "id": "789012",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
+    },
+    {
+      "first_name": "Jackson",
+      "last_name": "Ward",
+      "username": "jacksonward",
+      "password": "passworddef",
+      "Address": "321 Elm St",
+      "Age": 35,
+      "Department": "IT",
+      "id": "901234",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGF2YXRhciUyMHVzZXJ8ZW58MHx8MHx8fDA%3D"
+    },
+    {
+      "first_name": "Victoria",
+      "last_name": "Foster",
+      "username": "victoriafoster",
+      "password": "passwordmno",
+      "Address": "987 Cedar St",
+      "Age": 36,
+      "Department": "Sales",
+      "id": "123456",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&fm=jpg&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9"
     }
   ]
 }

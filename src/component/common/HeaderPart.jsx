@@ -8,6 +8,17 @@ import { getUserInfo } from "../../utils/helpers";
 
 const { Header } = Layout;
 
+const greetings = [
+  "Have a nice day",
+  "Good morning",
+  "Hello",
+  "Hola, me llamo",
+  "Bonjour",
+  "こんにちは",
+  "녕하세요",
+  "你好",
+];
+
 const HeaderPart = () => {
   const navigate = useNavigate();
   const userInfo = getUserInfo();
@@ -19,7 +30,14 @@ const HeaderPart = () => {
 
   return (
     <Layout>
-      <Header className={classes.header}>
+      <Header
+        className={classes.header}
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <Link to="/">
           {userInfo.avatar ? (
             <Avatar src={userInfo.avatar} alt="User Avatar" />
@@ -28,7 +46,8 @@ const HeaderPart = () => {
           )}
         </Link>
         <h2 style={{ color: "white", marginLeft: 20 }}>
-          Xin chao, {userInfo.first_name}
+          {greetings[Math.floor(Math.random() * greetings.length)]},{" "}
+          {userInfo.first_name}!
         </h2>
 
         <img src={logo} alt="logo" className={classes.logo} />

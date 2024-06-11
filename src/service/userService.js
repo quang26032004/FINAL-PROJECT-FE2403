@@ -13,7 +13,7 @@ const userService = {
     return api.post(ENDPOINT, data);
   },
   update(id, data) {
-    return api.put(ENDPOINT + id, data);
+    return api.patch(ENDPOINT + id, data);
   },
   delete(id) {
     return api.delete(ENDPOINT + id);
